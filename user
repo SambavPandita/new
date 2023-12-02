@@ -1,0 +1,77 @@
+#include <stdio.h>
+#include <string.h>
+
+// User and admin data
+char user_username[] = "user";
+char user_password[] = "password";
+char admin_username[] = "admin";
+char admin_password[] = "adminpass";
+
+// Function to validate user login
+int userLogin() {
+    char username[50], password[50];
+
+    printf("Enter username: ");
+    scanf("%s", username);
+
+    printf("Enter password: ");
+    scanf("%s", password);
+
+    if (strcmp(username, user_username) == 0 && strcmp(password, user_password) == 0) {
+        printf("User Login Successful!\n");
+        return 1; // Return 1 for successful login
+    } else {
+        printf("Invalid username or password. User login failed.\n");
+        return 0; // Return 0 for failed login
+    }
+}
+
+// Function to validate admin login
+int adminLogin() {
+    char username[50], password[50];
+
+    printf("Enter admin username: ");
+    scanf("%s", username);
+
+    printf("Enter admin password: ");
+    scanf("%s", password);
+
+    if (strcmp(username, admin_username) == 0 && strcmp(password, admin_password) == 0) {
+        printf("Admin Login Successful!\n");
+        return 1; // Return 1 for successful login
+    } else {
+        printf("Invalid username or password. Admin login failed.\n");
+        return 0; // Return 0 for failed login
+    }
+}
+
+int main() {
+    int choice;
+
+    printf("Welcome to Mini ATM\n");
+    do {
+        printf("\nChoose an option:\n");
+        printf("1. User Login\n");
+        printf("2. Admin Login\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                userLogin();
+                break;
+            case 2:
+                adminLogin();
+                break;
+            case 3:
+                printf("Exiting...\n");
+                break;
+            default:
+                printf("Invalid choice. Please enter a valid option.\n");
+                break;
+        }
+    } while (choice != 3);
+
+    return 0;
+}
